@@ -110,7 +110,7 @@ logger.info(f"Fetching data for tickers: {tickers}")
 urls = polygon.get_ticker_urls( 
     tickers=tickers,
     from_date="2025-01-01",
-    to_date="2025-01-03"
+    to_date="2025-03-31"
     )
 
 logger.info(f"First URL to be processed: {list(urls.keys())[0]}")
