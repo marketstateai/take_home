@@ -1,0 +1,26 @@
+Key considerations for scaling and resilience
+
+Example Design Brief
+    a) End user is a hedgefund DS team and will be used to power a product price model
+    b) In order for model to work effectively, the extraction rate must be no less than minutely
+    c) Pipeline must be reliable and handle errors gracefully, but must log these errors and provide alerts
+    d) There is an expectation that the data source will be unavailable periodically, max downtime SLA of two hours.
+    e) Must store raw data, and metadata, and details of the extraction process
+    f) Must be scalable up to 100_000 stocks
+    f) Cost considerations tbd
+
+Handling real time data updates:
+    When running hundreds of jobs at high frequencies (1< minute), it is almost guaranteed that the current process will not scale in practice.
+    Parallelisation of some kind might be necessary, where, given a set of known inputs (tickers), these are batched and then distributed across different workers.
+    A production deployment would typically consistent of a container that would then be deployed and managed by some service. 
+    This could be Astronomer-managed Airflow Kubernetes cluster or Cloud Composer, which again is a GCP managed Kubernetes engine for hosting Airflow, or some other self-managed Kubernetes deployment.
+
+Ensuring the pipeline is resilient to API failures:
+    While good Production APIs will have SLAs, it is common that updates or other issues will affect APIs in practice and that there will be unplanned or unpredictable downtime.
+    The end users' needs will typically determine when an error should result in the pipeline being blocked until the issue is resolved, or if it should continue uninterrupted with a notification of the issues. Therefore, there is no one size fits all answer to this.
+    Another key consideration exceeding rate limits, as often systems are built with a certain scale in mind, and then a large number of items are processed leading to a complete blockage.
+
+Make data accessible downstream:
+    For the data to be accessible downstream in near real time (<1minute or <1 second), typical platforms for batch orchestration like Airflow may run into latency issues, especially at scale. 
+    If the requirements are such, then other tools like Kafka or pub/sub may be a better option.
+    The main considerations are ensuring the pipeline is low latency, reliable and that adequate testing is place to ensure high quality data.

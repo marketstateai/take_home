@@ -1,0 +1,13 @@
+2025-07-09 06:59:59 - INFO - Initialized API client with base URL: https://api.polygon.io
+2025-07-09 06:59:59 - INFO - Fetching data for tickers: ['AAPL', 'MSFT', 'GOOGL']
+2025-07-09 06:59:59 - INFO - First URL to be processed: AAPL
+2025-07-09 07:00:01 - INFO - Successfully deduped and saved results to /Users/gabrielzenkner/My Projects/prolific/results.json
+2025-07-09 07:00:24 - INFO - Initialized API client with base URL: https://api.polygon.io
+2025-07-09 07:00:24 - INFO - Fetching data for tickers: ['AAPL', 'MSFT', 'GOOGL']
+2025-07-09 07:00:24 - INFO - First URL to be processed: AAPL
+2025-07-09 07:00:29 - ERROR - Error fetching data for GOOGL: Maximum retry attempts reached
+2025-07-09 07:00:29 - INFO - Successfully deduped and saved results to /Users/gabrielzenkner/My Projects/prolific/results.json
+2025-07-09 07:00:29 - INFO - Initialized API client with base URL: https://api.polygon.io
+2025-07-09 07:00:29 - INFO - Fetching data for tickers: ['AAPL', 'MSFT', 'GOOGL']
+2025-07-09 07:00:29 - INFO - First URL to be processed: AAPL
+2025-07-09 07:00:33 - ERROR - Error fetching data for AAPL: Maximum retry attempts reached

@@ -1,0 +1,15 @@
+Monitoring and Observability
+
+Approach to logging and Monitoring
+    If I had to build my own monitoring platform (which often does not pay off in the long run all things), I would use open source Python tools like Plotly or Streamlit to capture key metrics.
+    Typically, a managed hosting solution for any kind of observation platfrom will save time and a lot of headache. E.g., a Snowflake-hosted Streamlit app.
+
+Key metrics to track:
+    Simplicity is critical, if the metrics are overcomplex, they become harder to interpret, and when stakeholders are in doubt, they are more likely to catastrophize.
+    Some simple yet powerful examples of metrics would be daily success rate, e.g., the number of requests that failed / succeeded as well as the success rate over time, typically a week or month. 
+    While it is very possible for the incoming data request to be successful, some kind of coverage testing should be implemented to verify that all expected key-value pairs are present.
+    If there are data outages, it's critical to acknowledge that not all issues will have an immediate negative impact and convey this effectively to stakeholders. 
+    A simple traffic light system to allow end users to make go / no-go decisions based on data freshness is a simple approach.
+
+Detection of failures or data quality issues:
+    Typically, tools like dbt are very power in testing the data quality, and is recommended. Tools like Airflow (running dbt core) can notify of these issues and are exposed on a central dashoard. This can be extended with webhooks for e.g., Slack.
