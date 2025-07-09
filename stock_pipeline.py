@@ -186,7 +186,7 @@ if responses:
 
         df = df.drop_duplicates()
 
-        df.to_json(path/"results.json")
+        df.to_json(path/"results.json", indent=4)
         logger.info(f"Successfully deduped and saved results to {path/'results.json'}")
     except Exception as e:
         logger.error(f"Error during deduplication or saving results: {e}")
